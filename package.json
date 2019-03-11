@@ -1,0 +1,33 @@
+{
+  "name": "mini-wp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass -w assets/sass -o public/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahbubzulkarnain/mini-wp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mahbubzulkarnain/mini-wp/issues"
+  },
+  "homepage": "https://github.com/mahbubzulkarnain/mini-wp#readme",
+  "dependencies": {
+    "bulma": "^0.7.4",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "medium-editor": "^5.23.3",
+    "medium-editor-insert-plugin": "^2.5.1",
+    "medium-editor-markdown": "^3.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^6.2.0",
+    "node-sass": "^4.11.0"
+  }
+}
