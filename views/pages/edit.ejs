@@ -36,16 +36,31 @@
   $(function () {
     var vm = new Vue({
       el: "#app",
+      data:{
+        post:{}
+      },
+      mounted() {
+        api
+          .get('/<%= id %>')
+          .then(({data}) => {
+            title.setContent(data.title)
+            editor.setContent(data.content)
+            this.post = data
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      },
       methods: {
         createArticle: function () {
           api
-            .post('/', {
+            .put('/'+this.post._id, {
               title: title.getContent(),
-              content: editor.getContent(),
-              created_at: new Date()
+              content: editor.getContent()
             })
             .then(({data}) => {
-              window.location.replace('/read/' + data.data._id)
+              console.log(data)
+              window.location.replace('/read/'+data._id)
             })
             .catch((err) => {
               console.log(err)

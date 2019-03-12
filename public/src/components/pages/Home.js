@@ -1,0 +1,5 @@
+Vue.component('HomePage', {
+  template:`
+  
+  `
+});

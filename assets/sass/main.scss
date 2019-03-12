@@ -33,4 +33,13 @@ footer {
   background: $white;
 }
 
+#tab-content p {
+  display: none;
+}
+
+#tab-content p.is-active {
+  display: block;
+}
+
+
 @import "../../node_modules/bulma/bulma.sass";
