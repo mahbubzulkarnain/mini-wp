@@ -128,11 +128,14 @@
                                     <!--list-->
                                     <div v-if="published.length">
                                         <div v-for="(post, i) in published" class="columns is-multiline">
-                                            <div class="column is-full test">
+                                            <div class="column is-full">
                                                 <!--list-item-->
                                                 <div class="column is-full">
                                                     <div class="card mb-medium">
                                                         <div class="card-content">
+                                                            <div class="tags are-medium is-pulled-right">
+                                                                <span class="tag is-size-7">{{timeAgo(post.created_at)}} day ago</span>
+                                                            </div>
                                                             <div @click="page='read', selected=post._id"
                                                                  class="content">
                                                                 <p class="title">{{post.title}}</p>
@@ -308,6 +311,33 @@
         'medium-content': vueMediumEditor.default,
       },
       methods: {
+        timeAgo: function (second) {
+          let seconds = Math.floor((new Date(Date.now()) - new Date(second)) / 1000);
+          let interval = Math.floor(seconds / 31536000);
+          if (interval > 1) {
+            return interval + " tahun yang lalu";
+          }
+          interval = Math.floor(seconds / 2592000);
+          if (interval > 1) {
+            return interval + " bulan yang lalu";
+          }
+          interval = Math.floor(seconds / 86400);
+          if (interval > 1) {
+            return interval + " hari yang lalu";
+          }
+          interval = Math.floor(seconds / 3600);
+          if (interval > 1) {
+            return interval + " jam yang lalu";
+          }
+          interval = Math.floor(seconds / 60);
+          if (interval > 1) {
+            return interval + " menit yang lalu";
+          }
+          if (!!!+seconds || seconds < 30) {
+            return "beberapa saat yang lalu";
+          }
+          return Math.floor(seconds) + " detik yang lalu";
+        },
         deleteArticle: function (index) {
           api
             .delete('/' + this.selected)

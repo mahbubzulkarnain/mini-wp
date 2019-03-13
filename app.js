@@ -26,6 +26,12 @@ app
   .locals.webname = 'Hacktivy';
 
 app
+  .use(function (req, res, next) {
+    res.locals.rootdir =
+      next();
+  })
+
+app
   .use(express.static(path.join(__dirname, 'public')))
   .use(express.json())
   .use(express.urlencoded({extended: true}))
@@ -34,10 +40,12 @@ app
   .use('/editor/md', express.static(path.join(__dirname + '/node_modules/medium-editor-markdown/dist')));
 
 app
-  .use('/api/', require('./components/home/api'));
+  .use('/api/', require('./routes/index'));
 
 app
   .use('/', require('./components/home/web'));
+
+console.log(process.env.PORT || 3000);
 
 app
   .use(function (err, req, res, next) {
@@ -48,4 +56,4 @@ app
       .status(res.statusCode === 200 ? 500 : res.statusCode)
       .json({message: err.message})
   })
-  .listen(+(process.env.PORT || 3000));
+  .listen(+(3000));
