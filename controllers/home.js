@@ -1,4 +1,4 @@
-const Article = require('../models/article');
+const Article = require('../models/article/Index');
 
 class HomeController {
   static create(req, res) {
