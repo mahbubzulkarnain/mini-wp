@@ -1,5 +1,4 @@
-// const baseURL = "http://miniwp-server.cloudeyeglobal.com";
-const baseURL = "http://localhost:3000";
+const baseURL = "http://miniwp-server.cloudeyeglobal.com";
 
 var headers = {};
 
