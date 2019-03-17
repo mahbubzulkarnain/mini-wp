@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="google-signin-client_id"
+          content="948327471193-oa3aha2tm769qf29cq71ca4n7223h187.apps.googleusercontent.com">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loading...</title>
+    <script src="https://apis.google.com/js/api:client.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <link href="http://localhost:3000/css/main.css" type="text/css" rel="stylesheet">
+    <link href="http://localhost:3000/css/nav.css" type="text/css" rel="stylesheet">
+
+    <link href="http://localhost:3000/editor/css/medium-editor.css" type="text/css" rel="stylesheet">
+    <link href="http://localhost:3000/editor/css/themes/default.css" type="text/css" rel="stylesheet">
+
+    <!--Vue-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!--Jquery-->
+    <script
+            src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+
+    <!--Fontawesome-->
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+    <!--Axios-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!--Marked-->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!--Medium editor-->
+    <script type="text/javascript"
+            src="//cdn.rawgit.com/FranzSkuffka/vue-medium-editor/0.1.0/dist/vueMediumEditor.min.js"></script>
+    <script type="text/javascript" src="http://localhost:3000/editor/js/medium-editor.js"></script>
+
+    <script type="text/javascript" src="/js/tabs-bulma.js"></script>
+
+    <!--Tokenfield-->
+    <link href="http://localhost:3000/vendor/tokenfield/css/bootstrap-tokenfield.css" type="text/css" rel="stylesheet"/>
+    <link href="http://localhost:3000/vendor/tokenfield/css/tokenfield-typeahead.css" type="text/css" rel="stylesheet"/>
+    <script src="http://localhost:3000/vendor/tokenfield/bootstrap-tokenfield.js" type="text/javascript"></script>
+
+    <!--Component Vue-->
+    <script type="text/javascript" src="/components/custom-tabs.js"></script>
+    <script type="text/javascript" src="/components/custom-navbar.js"></script>
+    <script type="text/javascript" src="/components/custom-sidebar.js"></script>
+
+    <!--Component Article Vue -->
+    <script type="text/javascript" src="/components/article/article-list.js"></script>
+    <script type="text/javascript" src="/components/article/article-list-notfound.js"></script>
+    <script type="text/javascript" src="/components/article/article-item.js"></script>
+    <script type="text/javascript" src="/components/article/article-comment-list.js"></script>
+
+    <!--Page Vue-->
+    <script type="text/javascript" src="/views/auth/login-view.js"></script>
+    <script type="text/javascript" src="/views/auth/register-view.js"></script>
+
+    <script type="text/javascript" src="/views/home-view.js"></script>
+    <script type="text/javascript" src="/views/article-create-view.js"></script>
+    <script type="text/javascript" src="/views/article-read-view.js"></script>
+
+    <!--new vue instance-->
+    <script type="text/javascript" src="/js/main.js"></script>
+
+
+</head>
+<body>
+<div id="app" :style="{'margin-top': marginTop}">
+    <custom-navbar
+            @to="to"
+            @create-article="createArticle()"
+            @update-article="updateArticle()"
+            :page="page"
+    >
+    </custom-navbar>
+    <login-view :page="page" :params="params"  v-if="!isLogin && page ==='login'"></login-view>
+    <register-view :page="page" :params="params" v-if="!isLogin && page ==='register'"></register-view>
+    <home-view :page="page" :params="params" @to="to" v-if="page === 'home'"></home-view>
+    <article-read-view :page="page" :params="params" v-if="page === 'article'"></article-read-view>
+    <article-create-view
+            v-if="(page === 'create' || page === 'edit') && isLogin"
+            v-model="newarticle"
+            :page="page"
+            :params="params"
+    ></article-create-view>
+</div>
+</body>
+</html>

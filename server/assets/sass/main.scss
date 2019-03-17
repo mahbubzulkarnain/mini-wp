@@ -1,0 +1,55 @@
+@charset "utf-8";
+
+$primary: #00D1B4 !global;
+$white: #fff !global;
+
+$link: $primary !global;
+$title-color: $primary !global;
+
+$content-heading-color: $primary;
+
+$menu-item-hover-color: $white !global;
+$menu-item-hover-background-color: $primary !global;
+
+$navbar-dropdown-item-hover-color: $white !global;
+$navbar-dropdown-item-hover-background-color: $primary !global;
+
+$footer-background-color: $white;
+$footer-padding: 0;
+
+.p-0 {
+  padding: 0;
+}
+
+.pt-0 {
+  padding-top: 0;
+}
+
+footer {
+  left: 0;
+  bottom: 0;
+  height: 30px;
+  width: 100%;
+  background: $white;
+}
+
+#tab-content p {
+  display: none;
+}
+
+#tab-content p.is-active {
+  display: block;
+}
+
+.form-control {
+  @extend .input;
+  border-color: $primary !important;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1) !important;
+}
+
+.token-input {
+  @extend .input;
+  font-size: 15px;
+}
+
+@import "../../node_modules/bulma/bulma.sass";
