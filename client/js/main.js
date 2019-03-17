@@ -103,11 +103,17 @@ $(function () {
               }
             })
             .then(({data}) => {
-              this.to('/home/articles')
+              this.to('/home/articles');
+              this.newarticle = {
+                file: ``,
+                title: ``,
+                content: ``,
+                tags: '',
+              };
             })
             .catch((err) => {
               this.newarticle = dataUpload;
-              console.log(err.response.data)
+              console.log(err.response)
             })
 
         }
@@ -131,11 +137,17 @@ $(function () {
               }
             })
             .then(({data}) => {
-              this.to('/home/articles')
+              this.to('/home/articles');
+              this.newarticle = {
+                file: ``,
+                  title: ``,
+                  content: ``,
+                  tags: '',
+              };
             })
             .catch((err) => {
               this.newarticle = dataUpload;
-              console.log(err.response.data)
+              console.log(err.response)
             })
         }
       },

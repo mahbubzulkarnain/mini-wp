@@ -58,7 +58,7 @@ Vue.component('login-view', {
   mounted() {
     gapi.load('auth2', () => {
       auth2 = gapi.auth2.init({
-        client_id: '577955257208-bnmka8aiqq9ho0qivjuadqm529ege0aj.apps.googleusercontent.com',
+        client_id: '948327471193-oa3aha2tm769qf29cq71ca4n7223h187.apps.googleusercontent.com',
       });
       this.$root.attachSignin(document.getElementById('google-signin-button'))
     });
